@@ -53,4 +53,19 @@ https://help.disqus.com/en/articles/1717111-what-s-a-shortname 여기로 들어�
 
 이렇게 되있는거 보니까 따로 서버 만들고 스크립트로 댓글같은 정보를 불러와서 사용해도 될꺼 같다는 생각이 들었다.
 
+참고로 로컬에서 실행할 때는 single.html에 있는 댓글을 출력하기 위한 조건들을 출력해보면 
 
+![image](https://github.com/user-attachments/assets/970f6521-48dc-4f71-bf6b-f677a94c9395)
+
+![image](https://github.com/user-attachments/assets/de7d8ba8-cf94-4df0-83e6-92e045ae4bc0)
+
+이렇게 출력되는데 로컬에서는 jekyll.environment 이게 develoipment인데 production인 경우에만 댓글이 나오게 설정되어 있어서 
+
+
+![image](https://github.com/user-attachments/assets/8664d017-93f6-4a2c-ab61-575a0085a070)
+
+이렇게 jekyll.environemnt를 체크하는 부분을 없애면 
+
+![image](https://github.com/user-attachments/assets/5bdad113-6752-4526-a42b-b369d579c1ff)
+
+로컬에서도 댓글이 잘 출력된다.
