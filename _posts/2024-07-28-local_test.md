@@ -110,4 +110,19 @@ local에서 블로그가 잘 실행된다 !!
 이제 포스트 작성 후 로컬에서 확인 -> git에 올리기로 포스트를 할 수 있게 됐다!
 
 
-5
++++++++++++
+
+
+로컬에서 종료하고 다시 실행하면 
+
+![image](https://github.com/user-attachments/assets/583fe35b-3f23-45e6-9984-4cd98f5fbdcf)
+
+이렇게 오류가 뜨고 실행이 안되는 경우가 있는데 이 경우에는 
+
+![image](https://github.com/user-attachments/assets/62452912-4715-45b0-9fe9-74c21f30b494)
+
+_site 폴더를 삭제하면 된다 삭제 후 다시 실행하면
+
+![image](https://github.com/user-attachments/assets/f8e07d29-9ce5-4f7b-8745-21aada183dec)
+
+이와같이 정상적으로 실행된다.
