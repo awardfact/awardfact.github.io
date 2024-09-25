@@ -13,15 +13,23 @@
 
   <button  onclick="customCommentSubmit()">작성</button>
 
+  <div id="comment_list">
+
+
+  </div>
+
 </div>
 <script>
-
-const url = {
+let url = {
       url : "{{page.url}}" 
     };
 
 
-fetch('http://118.42.77.201:8008/git/get_comment', {
+
+
+  function commentPrint(){
+
+    fetch('http://118.42.77.201:8008/git/get_comment', {
       method: 'POST', // HTTP 메서드
       headers: {
         'Content-Type': 'application/json' // 전송할 데이터 타입
@@ -30,26 +38,31 @@ fetch('http://118.42.77.201:8008/git/get_comment', {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data); // 응답 데이터 처리
+      let comment_hmtl = "";
+      data.forEach(element => {
+        comment_hmtl+= "<div>작성자 : "+element.name+"  내용 : "+element.content+"  </div>";
+      });
+
+      document.getElementById("comment_list").innerHTML = comment_hmtl;
+      
     })
     .catch(error => {
       console.error('Error:', error); // 에러 처리
     });
     
 
+    
+  }
+
+
   function customCommentSubmit(){
 
-    console.log(document.getElementById("comment_writer").value);
-    console.log(document.getElementById("commnet_content").value);
-    
     const postData = {
       name: document.getElementById("comment_writer").value,
       content: document.getElementById("commnet_content").value,
       url : "{{page.url}}" 
     };
 
-    console.log(postData);
-    console.log(JSON.stringify(postData));
 
     // POST 요청 보내기
     fetch('http://118.42.77.201:8008/git/git_comment', {
@@ -62,42 +75,17 @@ fetch('http://118.42.77.201:8008/git/get_comment', {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data); // 응답 데이터 처리
+      commentPrint();
     })
     .catch(error => {
       console.error('Error:', error); // 에러 처리
     });
     
   }
-    // (function ($) {
-    // $('#comment_submit').onclick(function () {
-    //   var form = this;
 
-    //   $(form).addClass('disabled');
-    //   $('#comment-form-submit').html('<i class="fas fa-spinner fa-spin fa-fw"></i> {{ site.data.ui-text[site.locale].loading_label | default: "Loading..." }}');
 
-    //   $.ajax({
-    //     type: $(this).attr('method'),
-    //     url: $(this).attr('action'),
-    //     data: $(this).serialize(),
-    //     contentType: 'application/x-www-form-urlencoded',
-    //     success: function (data) {
-    //       $('#comment-form-submit').html('{{ site.data.ui-text[site.locale].comment_btn_submitted | default: "Submitted" }}');
-    //       $('.page__comments-form .js-notice').removeClass('notice--danger');
-    //       $('.page__comments-form .js-notice').addClass('notice--success');
-    //       showAlert('{{ site.data.ui-text[site.locale].comment_success_msg | default: "Thanks for your comment! It will show on the site once it has been approved." }}');
-    //     },
-    //     error: function (err) {
-    //       console.log(err);
-    //       $('#comment-form-submit').html('{{ site.data.ui-text[site.locale].comment_btn_submit  | default: "Submit Comment" }}');
-    //       $('.page__comments-form .js-notice').removeClass('notice--success');
-    //       $('.page__comments-form .js-notice').addClass('notice--danger');
-    //       showAlert('{{ site.data.ui-text[site.locale].comment_error_msg | default: "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again." }}');
-    //       $(form).removeClass('disabled');
-    //     }
-    //   });
+commentPrint();
 
-    // });
 
-  // })(jQuery);
   </script>
 <!-- end custom comments snippet -->
