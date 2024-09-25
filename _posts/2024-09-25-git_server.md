@@ -21,7 +21,7 @@ git 블로그에 댓글을 추가할 때 댓글 html 코드를 보는데 ajax를
 ![image](https://github.com/user-attachments/assets/4850615c-a52b-40e6-832d-531e88eadc69)
 
 
-이걸 custom으로 설정하면 /comments-providers/custom.html이 댓글 부분에 실행되서 이 html코드를 수정해준다.
+이걸 custom으로 설정하면 /comments-providers/custom.html이 댓글 부분에 실행돼서 이 html코드를 수정해준다.
 
 ![image](https://github.com/user-attachments/assets/a05aed2e-5426-4ede-aa5b-c370b57f3d9a)
 
